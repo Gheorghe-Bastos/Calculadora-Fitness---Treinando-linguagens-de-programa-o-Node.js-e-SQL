@@ -450,3 +450,4 @@ async function inserir_bancoDB(nome, email, idade, peso, altura, sexo, total_cal
 }
 
 menu();//Chama imediatamente a função menu() para iniciar o programa assim que ele for executado.
+// qualquer coisa
