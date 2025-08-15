@@ -61,10 +61,11 @@ if (!['1', '2'].includes(sexo_numero) || isNaN(idade) || isNaN(peso) || isNaN(al
 async function masculino() {
 //Calcula a Taxa Metabólica Basal (TMB) para homens usando a fórmula de Harris-Benedict.
    TMB = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * idade)
-   console.log(`\n1-Sedentário (pouco ou nenhum exercício) 
-    2-Levemente ativo (exercício leve 1-3 dias por semana) 
-    3-Moderadamente ativo (exercício moderado 3-5 dias por semana) 
-    4-Muito ativo (exercício intenso 6-7 dias por semana)`)
+   console.log(`    \n1-Sedentário (pouco ou nenhum exercício) 
+2-Levemente ativo (exercício leve 1-3 dias por semana) 
+3-Moderadamente ativo (exercício moderado 3-5 dias por semana) 
+4-Muito ativo (exercício intenso 6-7 dias por semana)`)
+    
     let fisico = await input('\n\t\tQuão intenso costuma ser o seus treinos?: ')
 //Verifica se a entrada é válida (entre 1 e 4). Se não for, exibe erro e retorna ao menu principal.
     if (!['1', '2', '3', '4'].includes(fisico)) {
@@ -92,10 +93,11 @@ async function masculino() {
 async function feminino() {
 //Calcula a Taxa Metabólica Basal (TMB) para homens usando a fórmula de Harris-Benedict.
     TMB = 447.593 + (9.247 * peso) +  (3.1 * altura) - (4.330 * idade)
-    console.log(`\n1-Sedentária (pouco ou nenhum exercício) 
-        2-Levemente ativa (exercício leve 1-3 dias por semana) 
-        3-Moderadamente ativa (exercício moderado 3-5 dias por semana) 
-        4-Muito ativa (exercício intenso 6-7 dias por semana)`)
+    console.log(`   \n1-Sedentária (pouco ou nenhum exercício) 
+2-Levemente ativa (exercício leve 1-3 dias por semana) 
+3-Moderadamente ativa (exercício moderado 3-5 dias por semana) 
+4-Muito ativa (exercício intenso 6-7 dias por semana)`)
+
     let fisico = await input('\n\t\tQuão intenso costuma ser o seus treinos?: ')
 //Verifica se a entrada é válida (entre 1 e 4). Se não for, exibe erro e retorna ao menu principal.
     if (!['1', '2', '3', '4'].includes(fisico)) {
@@ -177,8 +179,8 @@ async function calorias_detalhado() {
     console.log(`\nSEU GASTO CALÓRICO TOTAL é  ${total_calorias.toFixed(0)} calorias.`)//Mostra o valor do total_calorias (Taxa Metabólica Basal ajustada ao nível de atividade)
     console.log('\n\t\tCONSUMO DE CALORIAS')//Exibe o título para a seção de calorias provenientes de macronutrientes.
     console.log(`\nCalorias em carboidratos que voce precisa: ${kcal_carboidrato.toFixed(0)} kcal 
-    Calorias em proteinas que você precisa: ${kcal_proteina.toFixed(0)} kcal 
-    Calorias em gorduras que vocÊ precisa: ${kcal_gordura.toFixed(0)} kcal`)
+Calorias em proteinas que você precisa: ${kcal_proteina.toFixed(0)} kcal 
+Calorias em gorduras que vocÊ precisa: ${kcal_gordura.toFixed(0)} kcal`)
   /*Mostra a quantidade de calorias que devem ser consumidas por dia vindas de:
     Carboidratos
     Proteínas
@@ -208,11 +210,11 @@ async function calorias_detalhado() {
 de macronutrientes (em gramas) que a pessoa deve consumir por dia. */
 async function macronutrientes_detalhado() {
     console.log('\n\t\tCONSUMO DE MACRONUTRIENTES')//Exibe o título da seção sobre o consumo de macronutrientes.
-    console.log(`\nValor total de MACRONUTRIENTES: ${total_nutrientes.toFixed(0)}g 
+    console.log(`Valor total de MACRONUTRIENTES: ${total_nutrientes.toFixed(0)}g 
     
-    Carboidratos que você precisa: ${carboidrato.toFixed(0)}g 
-    Proteinas que você precisa: ${proteina.toFixed(0)}g 
-    Gorduras que você precisa: ${gordura.toFixed(0)}g`)
+Carboidratos que você precisa: ${carboidrato.toFixed(0)}g 
+Proteinas que você precisa: ${proteina.toFixed(0)}g 
+Gorduras que você precisa: ${gordura.toFixed(0)}g`)
 /*Total de gramas de macronutrientes (total_nutrientes)
 Gramas necessárias de carboidratos
 Gramas necessárias de proteínas
@@ -445,18 +447,17 @@ async function menu() {//Declara uma função assíncrona chamada menu, permitin
 
 // Na função inserir_bancoDB, ajuste a ordem dos parâmetros
 async function inserir_bancoDB(nome, email, idade, peso, altura, sexo, total_calorias,
-     total_nutrientes, min_agua, ideal_agua, kcal_carboidrato, kcal_proteina,
-      kcal_gordura, carboidrato, proteina, gordura) {
+     total_nutrientes, min_agua, ideal_agua, kcal_carboidrato,
+      kcal_proteina, kcal_gordura, carboidrato, proteina, gordura) {
   try {
     const [result] = await connect.execute(
       `INSERT INTO usuario (
-        nome, email, idade, peso, altura, sexo, total_calorias, total_nutrientes,
-         min_agua, ideal_agua, kcal_carboidrato, kcal_proteina, kcal_gordura,
-          carboidrato, proteina, gordura
+        nome, email, idade, peso, altura, sexo, total_calorias, total_nutrientes, min_agua,
+         ideal_agua, kcal_carboidrato, kcal_proteina, kcal_gordura, carboidrato, proteina, gordura
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        nome, email, idade, peso, altura, sexo, total_calorias, total_nutrientes,
-         min_agua, ideal_agua, kcal_carboidrato, kcal_proteina, kcal_gordura, carboidrato, proteina, gordura
+        nome, email, idade, peso, altura, sexo, total_calorias, total_nutrientes, 
+        min_agua, ideal_agua, kcal_carboidrato, kcal_proteina, kcal_gordura, carboidrato, proteina, gordura
       ]
     );
     return result;
@@ -467,4 +468,3 @@ async function inserir_bancoDB(nome, email, idade, peso, altura, sexo, total_cal
 }
 
 menu();//Chama imediatamente a função menu() para iniciar o programa assim que ele for executado.
-// qualquer coisa
